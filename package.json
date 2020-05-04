@@ -1,0 +1,41 @@
+{
+  "name": "pwa-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "sucrase ./src -d ./out/raw --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment",
+    "compile-node": "sucrase ./src -d ./out/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewp/pwa-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewp/pwa-framework/issues"
+  },
+  "homepage": "https://github.com/matthewp/pwa-framework#readme",
+  "devDependencies": {
+    "chokidar": "^3.4.0",
+    "lru-cache": "^5.1.1",
+    "node-fetch": "^2.6.0",
+    "preact-render-to-string": "^5.1.6",
+    "sucrase": "^3.13.0"
+  },
+  "dependencies": {
+    "fastify": "^2.14.0",
+    "fastify-static": "^2.7.0",
+    "preact": "^10.4.1",
+    "preact-helmet": "^4.0.0-alpha-3",
+    "snowpack": "^1.7.1"
+  },
+  "webDependencies": [
+    "preact",
+    "preact/hooks",
+    "preact-helmet"
+  ]
+}
