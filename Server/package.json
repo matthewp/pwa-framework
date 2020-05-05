@@ -1,0 +1,10 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/node/index.js",
+  "module": "./dist/web/index.js",
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  }
+}
