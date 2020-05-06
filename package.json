@@ -15,7 +15,7 @@
     "build:worker": "npm run build:worker:node && npm run build:worker:web",
     "build:src:node": "sucrase ./src -d ./dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
     "build:src": "npm run build:src:node",
-    "build": "npm run build:server && npm run build:src",
+    "build": "npm run build:server && npm run build:worker && npm run build:src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
