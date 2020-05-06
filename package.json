@@ -2,13 +2,15 @@
   "name": "@matthewp/pwa-framework",
   "version": "1.0.0",
   "description": "A framework",
-  "main": "index.js",
+  "main": "dist/node/index.js",
+  "module": "src/index.js",
   "scripts": {
     "compile": "sucrase ./src -d ./out/raw --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment",
     "compile-node": "sucrase ./src -d ./out/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment",
     "build:Server:node": "sucrase ./Server/src -d ./Server/dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
     "build:Server:web": "sucrase ./Server/src -d ./Server/dist/web --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment --production",
     "build:Server": "npm run build:Server:node && npm run build:Server:web",
+    "build:src:node": "sucrase ./src -d ./dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -34,9 +36,7 @@
     "snowpack": "^1.7.1",
     "lru-cache": "^5.1.1",
     "node-fetch": "^2.6.0",
-    "sucrase": "^3.13.0"
-  },
-  "peerDependencies": {
+    "sucrase": "^3.13.0",
     "preact": "^10.0.0"
   },
   "webDependencies": [
