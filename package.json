@@ -11,6 +11,8 @@
     "build:Server:web": "sucrase ./Server/src -d ./Server/dist/web --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment --production",
     "build:Server": "npm run build:Server:node && npm run build:Server:web",
     "build:src:node": "sucrase ./src -d ./dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
+    "build:src": "npm run build:src:node",
+    "build": "npm run build:Server && npm run build:src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {

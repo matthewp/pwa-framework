@@ -61,7 +61,7 @@ function updateElements (type, components) {
 function domify (component) {
   const el = document.createElement(component.type)
   const attrs = component.props || {}
-  const children = props.children
+  const children = attrs.children
   
   for (const p in attrs) {
     if (!attrs.hasOwnProperty(p)) continue
