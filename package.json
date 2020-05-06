@@ -7,12 +7,15 @@
   "scripts": {
     "compile": "sucrase ./src -d ./out/raw --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment",
     "compile-node": "sucrase ./src -d ./out/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment",
-    "build:Server:node": "sucrase ./Server/src -d ./Server/dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
-    "build:Server:web": "sucrase ./Server/src -d ./Server/dist/web --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment --production",
-    "build:Server": "npm run build:Server:node && npm run build:Server:web",
+    "build:server:node": "sucrase ./server/src -d ./server/dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
+    "build:server:web": "sucrase ./server/src -d ./server/dist/web --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment --production",
+    "build:server": "npm run build:server:node && npm run build:server:web",
+    "build:worker:node": "sucrase ./worker/src -d ./worker/dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
+    "build:worker:web": "sucrase ./worker/src -d ./worker/dist/web --transforms jsx --jsx-pragma h --jsx-fragment-pragma Fragment --production",
+    "build:worker": "npm run build:worker:node && npm run build:worker:web",
     "build:src:node": "sucrase ./src -d ./dist/node --transforms jsx,imports --jsx-pragma h --jsx-fragment-pragma Fragment --production",
     "build:src": "npm run build:src:node",
-    "build": "npm run build:Server && npm run build:src",
+    "build": "npm run build:server && npm run build:src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {

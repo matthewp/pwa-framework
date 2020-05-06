@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<title>Worker demo</title>
+<script type="module">
+  import { useMessage, useEffect, hook } from './index.js';
+
+  function reducer(state, action) {
+    switch(action.type) {
+      case 'increment': return { count: state.count + 1 };
+      case 'decrement': return { count: state.count - 1 };
+    }
+  }
+
+  function App() {
+    let [state, dispatch] = useMessage(reducer, { count: 0 });
+
+    useEffect(() => {
+      if(state.count < 5) {
+        dispatch({ type: 'increment' });
+      }
+    }, [state.count]);
+
+    useEffect(() => {
+      console.log('Count', state.count);
+    });
+  }
+
+  let app = hook(App);
+  app();
+</script>
