@@ -38,19 +38,31 @@ let useReducer = use.bind(null, (local, reducer, value, init) => {
   return [local.value, local.d];
 });
 
+let hasChanged = local => !local.deps || !local.last || local.deps.some((val, i) => local.last[i] !== val);
+
 let useEffect = use.bind(null, (local, fn, deps) => {
   local.deps = deps;
   local.fn = fn;
   if(!local.call) {
     state.effects.push(local);
     local.call = () => {
-      let change = !local.deps || !local.last || local.deps.some((val, i) => local.last[i] !== val);
-      local.last = local.deps;
-      if(change) {
+      if(hasChanged(local)) {
         local.fn();
       }
+      local.last = local.deps;
     };
   }
+});
+
+let useMemo = use.bind(null, (local, fn, deps) => {
+  local.deps = deps;
+  if(!local.val) {
+    if(hasChanged(local)) {
+      local.val = fn();
+    }
+    local.last = deps;
+  }
+  return local.val;
 });
 
 function hook(orig) {
@@ -89,4 +101,4 @@ function useMessage(reducer, initialState) {
   return [state, postMessage];
 }
 
-export { hook, useMessage, useEffect, useReducer };
+export { hook, useMessage, useEffect, useMemo, useReducer };
